@@ -51,6 +51,7 @@ void chaseLoop(uint32_t color1, uint32_t color2, uint8_t wait){
 	for(int c=0; c < 5; c++){ // Loop count
 		for(int i=0; i < strip.numPixels(); i++){
 			strip.setPixelColor(i, color1); // Sets the pixel color to the background
+			strip.setPixelColor((i - 1), color1);
 			strip.show();
 			delay(1);
 			strip.setPixelColor(i, color2); // Sets the chase pixel color.
