@@ -8,7 +8,6 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 void setup() {
   strip.begin(); // This initializes the NeoPixel library.
   startUp();
-  strip.show();
 }
 
 void loop() {
@@ -16,7 +15,7 @@ void loop() {
   chaseLoop(strip.color(255,0,0), strip.color(0,0,255), 100); 	// Has a single pixel changing color down the line.
 }
 
-void startUp(){ // Flashes green to show it works
+void startUp(){ // Flashes green to show it's on
 	uint8_t i;
 	for(int i=0; i<strip.numPixels(); i++){
 		strip.setPixelColor(i, 0, 255, 0);
@@ -48,13 +47,13 @@ void fadeLoop(uint8_t Rstart, uint8_t Gstart, uint8_t Bstart, uint8_t Rend, uint
 
 void chaseLoop(uint32_t color1, uint32_t color2, uint8_t wait){
 	uint8_t i, c;
-	for(int c=0; c < 5; c++){
+	for(int c=0; c < 5; c++){ // Loop count
 		for(int i=0; i < strip.numPixels(); i++){
 			strip.setPixelColor(i, color1); // Sets the pixel color to the background
 			strip.show();
 			delay(1);
 			strip.setPixelColor(i, color2); // Sets the chase pixel color.
-			strip.setPixelColor((i - 1), color2)
+			strip.setPixelColor((i - 1), (color2 / 2));
 			strip.show();
 			delay(wait);
 		}
