@@ -13,6 +13,7 @@ void setup() {
 void loop() {
   fadeLoop(255, 80, 0, 255, 150, 0, 10, 10); 										// Fades between two oranges
   chaseLoop(strip.color(255,0,0), strip.color(0,0,255), 100); 	// Has a single pixel changing color down the line.
+  fadeLoop(255, 255, 255, 255, 0, 0, 10, 25);
 }
 
 void startUp(){ // Flashes green to show it's on
